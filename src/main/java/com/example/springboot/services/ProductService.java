@@ -56,5 +56,12 @@ public class ProductService {
         return ResponseEntity.status(HttpStatus.OK).body(repository.save(productModel));
     }
 
+    public ResponseEntity<Object> deleteProduct(ProductModel productModel) {
+
+        repository.delete(productModel);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Product deleted successfully");
+    }
+
 
 }
