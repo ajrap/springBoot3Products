@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -21,7 +20,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 public class ProductNewController {
 
-    @Autowired  //ponto de injeção
+    @Autowired
     ProductService productService;
 
 
@@ -44,7 +43,7 @@ public class ProductNewController {
     public ResponseEntity<ProductModel> saveProducts(@RequestBody @Valid ProductRecordDTO productRecordDTO) {
         var productModel = new ProductModel();
 
-        //Converte de DTO para o Model
+         /* DTO para o Model */
         BeanUtils.copyProperties(productRecordDTO, productModel);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveProduct(productModel));
